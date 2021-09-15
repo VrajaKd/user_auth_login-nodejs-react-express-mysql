@@ -4,6 +4,7 @@ module.exports = {
   PASSWORD: "123456",
   DB: "testdb",
   dialect: "mysql",
+  port: "3306",
   pool: {
     // maximum number of connection in pool
     max: 5,
