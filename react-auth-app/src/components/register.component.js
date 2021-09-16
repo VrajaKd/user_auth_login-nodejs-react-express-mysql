@@ -23,6 +23,12 @@ const Register = () => {
 
   // Set validation criteria
   const validationSchema = Yup.object().shape({
+    first_name: Yup.string()
+      .required('First name is required')
+      .max(30, 'First name must not exceed 30 characters'),
+    last_name: Yup.string()
+      .required('Last name is required')
+      .max(30, 'Last name must not exceed 30 characters'),
     username: Yup.string()
       .required('Username is required')
       .min(4, 'Username must be at least 4 characters')
@@ -46,7 +52,7 @@ const Register = () => {
 
   // Handle Register button click
   const onSubmit = data => {
-    AuthService.register(data.username, data.email, data.password).then(
+    AuthService.register(data.first_name, data.last_name, data.username, data.email, data.password).then(
       (resp) => {
         window.location.replace("/login");
       },
@@ -68,6 +74,49 @@ const Register = () => {
       <Paper>
         <Box mt={5} px={3} py={5}>
           <Grid container spacing={1}>
+
+            <Grid item xs={12} sm={12}>
+              <TextField
+                inputProps={{
+                  style: {
+                    padding: 10
+                  }
+                }}
+                required
+                id="first_name"
+                name="first_name"
+                label="First Name"
+                fullWidth
+                margin="dense"
+                {...register('first_name')}
+                error={!!errors.first_name}
+              />
+              <Typography variant="inherit" color="textSecondary">
+                {errors.first_name?.message}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={12}>
+              <TextField
+                inputProps={{
+                  style: {
+                    padding: 10
+                  }
+                }}
+                required
+                id="last_name"
+                name="last_name"
+                label="Last Name"
+                fullWidth
+                margin="dense"
+                {...register('last_name')}
+                error={!!errors.last_name}
+              />
+              <Typography variant="inherit" color="textSecondary">
+                {errors.last_name?.message}
+              </Typography>
+            </Grid>
+
             <Grid item xs={12} sm={12}>
               <TextField
                 inputProps={{
