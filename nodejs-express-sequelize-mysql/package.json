@@ -1,0 +1,45 @@
+{
+  "name": "nodejs-express-sequelize-mysql",
+  "version": "1.0.0",
+  "description": "Node.js Rest Apis with Express, Sequelize & MySQL.",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VrajaKd/user_auth-nodejs-react-express-mysql.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "sequelize",
+    "mysql",
+    "rest",
+    "api"
+  ],
+  "author": "vrajakd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VrajaKd/user_auth-nodejs-react-express-mysql/issues"
+  },
+  "homepage": "https://github.com/VrajaKd/user_auth-nodejs-react-express-mysql#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^27.2.1",
+    "node-mocks-http": "^1.10.1",
+    "sequelize-mock": "^0.10.2",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.6"
+  }
+}
