@@ -5,23 +5,20 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const config = require("../config/auth.config");
 
-exports.signup = (req, res) => {
-  // Save User to Database
-  User.create({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    username: req.body.username,
-    email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8)
-  })
-    .then((user) => {
-      if (user._options.isNewRecord) {
-        res.send({message: "User was registered successfully!"});
-      }
-    })
-    .catch(err => {
-      res.status(500).send({message: err.message});
+exports.signup = async (req, res, next) => {
+  try {
+    // Save User to Database
+    const createdModel = await User.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      username: req.body.username,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password, 8)
     });
+    res.status(201).json(createdModel);
+  } catch (err) {
+    next(err);
+  }
 };
 
 exports.signin = (req, res) => {
@@ -56,6 +53,7 @@ exports.signin = (req, res) => {
         id: user.id,
         username: user.username,
         email: user.email,
+        first_name: user.first_name,
         accessToken: token
       });
     })

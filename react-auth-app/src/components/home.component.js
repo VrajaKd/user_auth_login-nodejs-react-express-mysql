@@ -4,6 +4,8 @@ import UserService from "../services/user.service";
 import AuthService from "../services/auth.service";
 import {Box} from "@material-ui/core";
 
+import Hello from "./Hello";
+
 
 export default class Home extends Component {
   constructor(props) {
@@ -30,14 +32,15 @@ export default class Home extends Component {
         });
       }
     );
-  }
+  };
+
 
   render() {
     const {currentUser} = this.state;
     return (
       <Box>
         {currentUser ? (
-          <h4>Yay, you’re logged in!</h4>
+          <Hello name={currentUser.first_name}/>
         ) : (
           <h4>You are not logged in, try it!</h4>
         )}

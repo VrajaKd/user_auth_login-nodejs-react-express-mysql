@@ -1,9 +1,17 @@
 // Controller for testing Authorization
 
-exports.allAccess = (req, res) => {
-  res.status(200).send("Public Content.");
+exports.allAccess = async (req, res, next) => {
+  try {
+    res.status(200).send("Public Content.");
+  } catch (err) {
+    next(err);
+  }
 };
 
-exports.userBoard = (req, res) => {
-  res.status(200).send("User Content.");
+exports.userBoard = async (req, res, next) => {
+  try {
+    res.status(200).send("User Content.");
+  } catch (err) {
+    next(err);
+  }
 };

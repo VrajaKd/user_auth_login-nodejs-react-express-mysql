@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // define a GET route which is simple for test
 app.get("/", (req, res) => {
+  res.status(200).send("Hello World!");
   res.json({ message: "Welcome to User authentication application." });
 });
 
