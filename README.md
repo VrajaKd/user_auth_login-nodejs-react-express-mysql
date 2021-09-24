@@ -1,4 +1,3 @@
-
 ## How to set up ##
 
 - Set up database in /nodejs-express-sequelize-mysql/app/config/config.js
